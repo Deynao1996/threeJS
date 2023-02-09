@@ -1,14 +1,32 @@
 {
-  "name": "redux-app",
+  "name": "threeJS",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.15",
+    "@react-three/cannon": "^6.5.2",
+    "@react-three/drei": "^9.51.24",
+    "@react-three/fiber": "^8.10.0",
+    "@react-three/postprocessing": "^2.7.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "babel-plugin-glsl": "^1.0.0",
+    "glsl-noise": "0.0.0",
+    "glslify": "^7.1.1",
+    "gsap": "^3.11.4",
+    "leva": "^0.9.34",
+    "nice-color-palettes": "^3.0.0",
+    "postprocessing": "^6.29.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-gsap": "^3.2.1",
     "react-scripts": "4.0.3",
+    "react-scrollmagic": "^2.3.0",
+    "simplex-noise": "^3.0.1",
+    "three": "^0.139.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -16,12 +34,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -34,5 +46,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/dat.gui": "^0.7.7",
+    "dat.gui": "^0.7.9",
+    "@babel/eslint-parser": "^7.18.9",
+    "@babel/preset-react": "^7.18.6",
+    "@tanstack/react-query-devtools": "^4.20.4",
+    "eslint-config-prettier": "^8.5.0"
   }
 }

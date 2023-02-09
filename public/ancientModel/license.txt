@@ -1,0 +1,11 @@
+Model Information:
+* title:	[1k] Head of Amenhotep III
+* source:	https://sketchfab.com/3d-models/1k-head-of-amenhotep-iii-4bdb98d95bd04be8898ae58f1ec50c6c
+* author:	Thomas Flynn (https://sketchfab.com/nebulousflynn)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "[1k] Head of Amenhotep III" (https://sketchfab.com/3d-models/1k-head-of-amenhotep-iii-4bdb98d95bd04be8898ae58f1ec50c6c) by Thomas Flynn (https://sketchfab.com/nebulousflynn) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
