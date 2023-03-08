@@ -7,7 +7,7 @@ import { useMemo, useRef } from 'react'
 import * as THREE from 'three'
 
 export const truchetProps = {
-  camera: { position: [0, 0, -4], fov: 70 },
+  camera: { position: [0, 0, -4], fov: 10 },
   style: { zIndex: 110 }
 }
 

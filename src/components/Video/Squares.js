@@ -1,9 +1,8 @@
-import { shaderMaterial } from "@react-three/drei"
-import { extend, useFrame } from "@react-three/fiber"
-import glsl from "babel-plugin-glsl/macro"
-import { useEffect, useRef } from "react"
+import { shaderMaterial } from '@react-three/drei'
+import { extend, useFrame } from '@react-three/fiber'
+import glsl from 'babel-plugin-glsl/macro'
+import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
-
 
 const SquareShaderMaterial = shaderMaterial(
   {
@@ -131,12 +130,12 @@ const Squares = ({ squaresMaterialRef, counterRef }) => {
 
   function setCustomMatrix() {
     let dummy = new THREE.Object3D(),
-        counter = 0
-    for (let i = -counterRef.current/2; i < counterRef.current/2; i++) {
-      for (let j = -counterRef.current/2; j < counterRef.current/2; j++) {
-        dummy.position.set(i/10, j/10, 0)
+      counter = 0
+    for (let i = -counterRef.current / 2; i < counterRef.current / 2; i++) {
+      for (let j = -counterRef.current / 2; j < counterRef.current / 2; j++) {
+        dummy.position.set(i / 10, j / 10, 0)
         dummy.updateMatrix()
-        boxRef.current.setMatrixAt(counter ++, dummy.matrix)
+        boxRef.current.setMatrixAt(counter++, dummy.matrix)
       }
     }
     boxRef.current.position.z = 0.01
@@ -149,11 +148,10 @@ const Squares = ({ squaresMaterialRef, counterRef }) => {
 
   useEffect(() => void setCustomMatrix(), [])
 
-
   return (
-    <instancedMesh ref={boxRef} args={[null, null, counterRef.current**2]}>
+    <instancedMesh ref={boxRef} args={[null, null, counterRef.current ** 2]}>
       <planeBufferGeometry args={[0.1, 0.1]} />
-      <squareShaderMaterial 
+      <squareShaderMaterial
         ref={squaresMaterialRef}
         side={THREE.DoubleSide}
         transparent={true}

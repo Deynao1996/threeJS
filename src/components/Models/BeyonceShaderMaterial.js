@@ -193,7 +193,7 @@ const Beyonce = () => {
 
   return (
     <>
-      {/* <OrbitControls camera={camera}/> */}
+      <OrbitControls camera={camera} />
       <points ref={pointsRef}>
         <bufferGeometry ref={geometryRef} />
         <beyonceShaderMaterial ref={materialRef} />
