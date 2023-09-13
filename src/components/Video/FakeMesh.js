@@ -1,4 +1,4 @@
-import { useThree } from "@react-three/fiber"
+import { useThree } from '@react-three/fiber'
 
 const FakeMesh = ({ squaresMaterialRef }) => {
   const { scene } = useThree()
@@ -9,10 +9,9 @@ const FakeMesh = ({ squaresMaterialRef }) => {
     scene.rotation.y = e.point.x / 10
   }
 
-
   return (
     <mesh onPointerMove={onMouseMove} visible={false}>
-      <planeBufferGeometry args={[5, 5]} />
+      <planeGeometry args={[5, 5]} />
       <meshBasicMaterial />
     </mesh>
   )

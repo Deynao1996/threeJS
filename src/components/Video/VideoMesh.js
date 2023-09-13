@@ -1,7 +1,7 @@
-import { shaderMaterial, useAspect } from "@react-three/drei"
-import { extend } from "@react-three/fiber"
-import glsl from "babel-plugin-glsl/macro"
-import { useEffect, useState } from "react"
+import { shaderMaterial, useAspect } from '@react-three/drei'
+import { extend } from '@react-three/fiber'
+import glsl from 'babel-plugin-glsl/macro'
+import { useEffect, useState } from 'react'
 import * as THREE from 'three'
 
 const VideoShaderMaterial = shaderMaterial(
@@ -36,9 +36,9 @@ extend({ VideoShaderMaterial })
 
 const VideoMesh = () => {
   const size = useAspect(1920, 1080)
-  const [ video ] = useState(() =>
-    Object.assign(document.createElement('video'), { 
-      src: '/video/video.mp4', 
+  const [video] = useState(() =>
+    Object.assign(document.createElement('video'), {
+      src: '/video/video.mp4',
       crossOrigin: 'Anonymous',
       loop: true,
       muted: true
@@ -47,13 +47,12 @@ const VideoMesh = () => {
 
   useEffect(() => void video.play(), [video])
 
-  const newSize = size.map((pos, index) => index === 0 ? 2.4 : pos)
+  const newSize = size.map((pos, index) => (index === 0 ? 2.4 : pos))
 
-  
   return (
     <mesh scale={newSize}>
-      <planeBufferGeometry />
-      <videoShaderMaterial 
+      <planeGeometry />
+      <videoShaderMaterial
         uTexture={new THREE.VideoTexture(video)}
         side={THREE.DoubleSide}
       />

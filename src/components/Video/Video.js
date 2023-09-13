@@ -1,7 +1,4 @@
-import { OrbitControls } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
 import { useRef } from 'react'
-
 import FakeMesh from './FakeMesh'
 import Lines from './Lines'
 import Points from './Points'
@@ -14,13 +11,11 @@ export const videoCanvasProps = {
 }
 
 const Video = () => {
-  const { camera } = useThree()
   const squaresMaterialRef = useRef()
   const counterRef = useRef(40)
 
   return (
     <>
-      {/* <OrbitControls camera={camera} /> */}
       <group>
         <Squares
           squaresMaterialRef={squaresMaterialRef}

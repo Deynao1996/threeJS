@@ -9,6 +9,8 @@ import {
   ShaderPass
 } from 'postprocessing'
 import { HalfFloatType } from 'three'
+import { transitionShader } from '../../shaders/transitionShader'
+import { rgbaShader } from '../../shaders/rgbaShader'
 
 const ForestEffect = ({ uniforms }) => {
   const { gl, scene, camera, size } = useThree()
@@ -23,54 +25,14 @@ const ForestEffect = ({ uniforms }) => {
       uniforms: {
         ...uniforms
       },
-      vertexShader:
-        'varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }',
-      fragmentShader: glsl`
-        uniform float progress;
-        uniform sampler2D tex;
-
-        varying vec2 vUv;
-
-        void main() {
-          vec2 p = vUv;
-    
-          if(p.x < 0.25) {
-    
-          } else if(p.x < 0.5) {
-            p.x = p.x - 0.25 * progress;
-          } else if(p.x < 0.75) {
-            p.x = p.x - 0.35 * progress;
-          } else {
-            p.x = p.x - 0.65 * progress;
-          }
-    
-          vec4 color = texture2D(tex, p);
-          gl_FragColor = color;
-        }`
+      ...transitionShader
     })
 
     const RGBAMaterial = new THREE.ShaderMaterial({
       uniforms: {
         ...uniforms
       },
-      vertexShader:
-        'varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }',
-      fragmentShader: glsl`
-        uniform float progress;
-        uniform sampler2D tex;
-        
-        varying vec2 vUv;
-
-        void main() {
-          vec2 p = vUv;
-
-          vec4 cr = texture2D(tex, p + progress * vec2(0.1, 0.));
-          vec4 cg = texture2D(tex, p);
-          vec4 cb = texture2D(tex, p - progress * vec2(0.1, 0.));
-
-          vec4 color = vec4(cr.r, cg.g, cb.b, 1.);
-          gl_FragColor = color;
-        }`
+      ...rgbaShader
     })
 
     RGBAMaterial.map = true
