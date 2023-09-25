@@ -3,8 +3,10 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
 import loadable from '@loadable/component'
 
-const defaultLabel = 'Boeve'
+const defaultLabel = 'Template'
 const componentsArr = [
+  { label: '--DEVELOPMENT--', component: null },
+  { label: 'Template', component: loadable(() => import('./Template')) },
   { label: '--FIGURES--', component: null },
   { label: 'Boeve', component: loadable(() => import('./Figures/Boeve')) },
   { label: 'Clouds', component: loadable(() => import('./Figures/Clouds')) },
@@ -59,6 +61,13 @@ const componentsArr = [
     props: {
       camera: { position: [0, 0, 7], fov: 35 },
       linear: true
+    }
+  },
+  {
+    label: 'Ego',
+    component: loadable(() => import('./Galleries/Ego')),
+    props: {
+      camera: { position: [0, 0, 2], fov: 70 }
     }
   },
   { label: 'Hajime', component: loadable(() => import('./Galleries/Hajime')) },
