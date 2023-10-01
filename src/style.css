@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color-scheme: dark;
 }
 
 :root {
+  /* palette */
   --gray: #34495e;
   --darkgray: #2c3e50;
+  --light-grey: #777;
   --contrasted: #f39c12;
   --light: #ffffff;
   --danger: red;
+  --slider-gradient: linear-gradient(90deg, var(--light), var(--contrasted) 20%, rgba(100, 50, 230, 0));
 }
 
 #root {
@@ -18,6 +24,7 @@
   height: 100svh;
 }
 
+/* Select */
 select {
   appearance: none;
   outline: 10px var(--danger);
@@ -79,6 +86,63 @@ a {
   right : 2%;
   z-index: 5000;
 }
+
+/* Slider for Ever */
+.slider {
+  width: 200vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide {
+  width: 360px;
+  height: 240px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+  overflow: hidden;
+  color: var(--light-grey);
+}
+
+.slide strong {
+  color: var(--light);
+  font-weight: bold;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.slider__separator {
+  position: fixed;
+  width: 100px;
+  height: 230px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: .4s opacity ease-out;
+  mix-blend-mode: screen;
+}
+
+.slider__separator::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--slider-gradient);
+}
+
+.slider__scroller {
+  display: flex;
+  width: 100%;
+  gap: 20rem;
+}
+
 
 
 

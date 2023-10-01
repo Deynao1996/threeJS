@@ -3,10 +3,10 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
 import loadable from '@loadable/component'
 
-const defaultLabel = 'Template'
+const defaultLabel = 'Brain'
 const componentsArr = [
   { label: '--DEVELOPMENT--', component: null },
-  { label: 'Template', component: loadable(() => import('./Template')) },
+  { label: 'Brain', component: loadable(() => import('./Figures/Brain')) },
   { label: '--FIGURES--', component: null },
   { label: 'Boeve', component: loadable(() => import('./Figures/Boeve')) },
   { label: 'Clouds', component: loadable(() => import('./Figures/Clouds')) },
@@ -51,6 +51,7 @@ const componentsArr = [
   },
   { label: '--GALLERIES--', component: null },
   { label: 'Antoni', component: loadable(() => import('./Galleries/Antoni')) },
+
   {
     label: 'Deburis',
     component: loadable(() => import('./Galleries/Deburis'))
@@ -73,6 +74,15 @@ const componentsArr = [
   { label: 'Hajime', component: loadable(() => import('./Galleries/Hajime')) },
   { label: 'Tao', component: loadable(() => import('./Galleries/Tao')) },
   { label: '--IMAGES--', component: null },
+  {
+    label: 'Ever',
+    component: loadable(() => import('./Images/Ever')),
+    props: {
+      camera: { position: [0, 0, 7], fov: 30 },
+      gl: { antialias: true, alpha: true },
+      isBackgroundRemoved: true
+    }
+  },
   { label: 'Barovier', component: loadable(() => import('./Images/Barovier')) },
   { label: 'Billie', component: loadable(() => import('./Images/Billie')) },
   { label: 'Image', component: loadable(() => import('./Images/Image')) },
@@ -114,7 +124,9 @@ const Scene = () => {
   const selectedProps = componentsArr.find(
     (item) => item.label === selectedValue
   )?.props
-  const canvasProps = selectedProps ? selectedProps : defaultProps
+  const { isBackgroundRemoved, ...canvasProps } = selectedProps
+    ? selectedProps
+    : defaultProps
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value)
@@ -137,7 +149,9 @@ const Scene = () => {
         handleSelectChange={handleSelectChange}
       />
       <Canvas {...canvasProps} style={{ zIndex: 110 }}>
-        <color attach="background" args={['#0a0a0a']} />
+        {!isBackgroundRemoved && (
+          <color attach="background" args={['#0a0a0a']} />
+        )}
         <Suspense fallback={null}>{renderSelectedComponent()}</Suspense>
       </Canvas>
       <Loader />
@@ -164,46 +178,5 @@ const CustomSelect = ({ selectedValue, handleSelectChange }) => {
     </div>
   )
 }
-// import CrossWire, { crossWireProps } from './Models/CrossWire'
-// import Head from './Models/Head'
-// import Ancient from './Models/Ancient'
-// import Mathis from './Models/Mathis'
-// import Beyonce from './Models/Beyonce'
-// import Dna from './Models/Dna'
-
-// import Triangles from './Figures/Triangle'
-// import Dave from './Figures/Dave'
-// import Sun from './Figures/Sun'
-// import Tornado from './Figures/Tornado'
-// import Monopo from './Figures/Monopo'
-// import Sketch, { sketchProps } from './Figures/Sketch'
-// import Ribbons, { ribbonsProps } from './Figures/Ribbons'
-// import Truchet, { truchetProps } from './Figures/Truchet'
-// import Tornado from './Figures/Tornado'
-// import Midwam, { midreamCanvasProps } from './Models/Midwam'
-// import Lusion from './Figures/Lusion'
-// import Boeve from './Figures/Boeve'
-// import Gradient, { gradientCanvasProps } from './Figures/Gradient'
-// import Grid from './Figures/Grid'
-// import Galaxy, { galaxyProps } from './Figures/Galaxy'
-// import Clouds from './Figures/Clouds'
-
-// import Forest, { forestCanvasProps } from './Galleries/Forest'
-// import Antoni from './Galleries/Antoni'
-// import Gallery, { galleryProps } from './Galleries/Gallery'
-// import Hajime from './Galleries/Hajime'
-// import Tao from './Galleries/Tao'
-// import Deburis from './Galleries/Deburis'
-// import Video, { videoCanvasProps } from './Video/Video'
-// import Pixi from './Images/Pixi'
-// import Volt from './Images/Volt'
-// import Billie from './Images/Billie'
-// import Whatever from './Images/Whatever'
-// import Image from './Images/Image'
-// import Barovier from './Images/Barovier'
-// import Wave from './Images/Wave'
-// import Text from './Images/Text'
-// import Watches from './Images/Watches'
-// import Waves from './Images/Waves'
 
 export default Scene
