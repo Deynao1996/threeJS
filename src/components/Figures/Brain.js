@@ -1,8 +1,11 @@
-import { OrbitControls, shaderMaterial } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 import { extend, useFrame, useThree } from '@react-three/fiber'
-import glsl from 'babel-plugin-glsl/macro'
-import { useMemo, useRef } from 'react'
-import { CatmullRomCurve3, Vector3 } from 'three'
+import { useEffect, useMemo, useRef } from 'react'
+import { AdditiveBlending, CatmullRomCurve3, DoubleSide, Vector3 } from 'three'
+import {
+  BrainShaderMaterial,
+  PointsShaderMaterial
+} from '../ExtendableShaders/BrainShaders'
 
 const data = {
   settings: [1, 0, 30, 2, 2, 30, 5],
@@ -926,69 +929,172 @@ const data = {
 
 const paths = data.paths
 
-const BrainShaderMaterial = shaderMaterial(
-  {
-    uTime: 0
-  },
-  glsl`
-    varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+function randomRange(min, max) {
+  return Math.random() * (max - min) + min
+}
+
+// Create a curves using the Catmull-Rom algorithm
+function getCurvesFromSphere() {
+  const curves = []
+  for (let i = 0; i < 100; i++) {
+    // Create an empty array to store the points
+    const points = []
+    const length = randomRange(0.1, 1)
+    for (let j = 0; j < 100; j++) {
+      // Calculate the spherical coordinates for each point and push it to the array
+      points.push(
+        new Vector3().setFromSphericalCoords(
+          1,
+          Math.PI - (j / 100) * Math.PI * length,
+          (i / 100) * Math.PI * 2
+        )
+      )
     }
-  `,
-  glsl`
-    precision mediump float;
+    const cutmullCurve = new CatmullRomCurve3(points)
+    curves.push(cutmullCurve)
+  }
+  return curves
+}
 
-    varying vec2 vUv;
+// Create an array to store the curves
+const brainCurves = paths.map((p) => {
+  const points = []
+  for (let i = 0; i < p.length; i += 3) {
+    points.push(new Vector3(p[i], p[i + 1], p[i + 2]))
+  }
+  return new CatmullRomCurve3(points)
+})
 
-    uniform float uTime;
-
-    void main() {
-      gl_FragColor = vec4(vUv, 0., 1.);
-    }  
-  `
-)
-
-extend({ BrainShaderMaterial })
+extend({ BrainShaderMaterial, PointsShaderMaterial })
 
 const Brain = () => {
   const { camera } = useThree()
-  const materialRef = useRef()
-
-  // useFrame(({ clock }) => {
-  //   materialRef.current.uTime = clock.getElapsedTime()
-  // })
 
   return (
     <>
       <OrbitControls camera={camera} />
       <ambientLight />
       <group>
-        <mesh>
-          <planeGeometry args={[1, 1, 1, 1]} />
-          <brainShaderMaterial ref={materialRef} />
-        </mesh>
-        <Tube />
+        {brainCurves.map((curve, i) => (
+          <Tube curve={curve} key={i} />
+        ))}
+        <Particles curves={brainCurves} />
       </group>
     </>
   )
 }
 
-const Tube = () => {
-  // Create a curve using the Catmull-Rom algorithm
-  const curve = useMemo(() => {
-    const points = [...new Array(10)].reduce((prev, _, i) => {
-      prev.push(new Vector3((i - 5) * 0.5, Math.sin(i * 2) * 10 + 5, 0))
-      return prev
-    }, [])
-    return new CatmullRomCurve3(points)
+const Particles = ({ curves, density = 10 }) => {
+  const pointsRef = useRef([])
+  const geoRef = useRef()
+  // Create positions array using useMemo
+  const positions = useMemo(() => {
+    const pos = []
+    for (let i = 0; i < 100; i++) {
+      pos.push(randomRange(-1, 1), randomRange(-1, 1), randomRange(-1, 1))
+    }
+    return new Float32Array(pos)
   }, [])
+
+  // Create randoms array using useMemo
+  const randoms = useMemo(() => {
+    const rnd = []
+    for (let i = 0; i < 100; i++) {
+      rnd.push(randomRange(0.3, 1))
+    }
+    return new Float32Array(rnd)
+  }, [])
+
+  function pointsConfig() {
+    for (let i = 0; i < curves.length; i++) {
+      for (let j = 0; j < density; j++) {
+        pointsRef.current.push({
+          currentOffset: Math.random(),
+          speed: Math.random() * 0.01,
+          curve: curves[i],
+          currentPosition: Math.random()
+        })
+      }
+    }
+  }
+
+  function animatePointsPosition() {
+    const currentPosition = geoRef.current.attributes.position.array
+
+    for (let i = 0; i < pointsRef.current.length; i++) {
+      pointsRef.current[i].currentPosition += pointsRef.current[i].speed
+      pointsRef.current[i].currentPosition =
+        pointsRef.current[i].currentPosition % 1
+
+      const curPos = pointsRef.current[i].curve.getPoint(
+        pointsRef.current[i].currentPosition
+      )
+      currentPosition[i * 3] = curPos.x
+      currentPosition[i * 3 + 1] = curPos.y
+      currentPosition[i * 3 + 2] = curPos.z
+    }
+    geoRef.current.attributes.position.needsUpdate = true
+  }
+
+  useEffect(() => {
+    pointsConfig()
+  }, [])
+
+  useFrame(() => {
+    animatePointsPosition()
+  })
+
+  return (
+    <points>
+      <bufferGeometry ref={geoRef}>
+        <bufferAttribute
+          attach="attributes-position"
+          count={positions.length / 3}
+          itemSize={3}
+          array={positions}
+        />
+        <bufferAttribute
+          attach="attributes-randoms"
+          count={randoms.length}
+          itemSize={1}
+          array={randoms}
+        />
+      </bufferGeometry>
+      <pointsShaderMaterial
+        depthTest={false}
+        transparent={true}
+        depthWrite={false}
+        blending={AdditiveBlending}
+      />
+    </points>
+  )
+}
+
+const Tube = ({ curve }) => {
+  const viewport = useThree((state) => state.viewport)
+  const materialRef = useRef()
+
+  // Update the material properties on each frame
+  useFrame(({ clock, mouse }) => {
+    materialRef.current.uTime = clock.getElapsedTime()
+    materialRef.current.uMouse = new Vector3(
+      (mouse.x * viewport.width) / 2,
+      (mouse.y * viewport.height) / 2,
+      0
+    )
+  })
 
   return (
     <mesh>
-      <tubeGeometry args={[curve, 64, 0.1, 8, false]} />
-      <meshStandardMaterial color={'hotpink'} />
+      <tubeGeometry args={[curve, 64, 0.001, 2, false]} />
+      <brainShaderMaterial
+        ref={materialRef}
+        side={DoubleSide}
+        transparent={true}
+        depthWrite={true}
+        depthTest={true}
+        blending={AdditiveBlending}
+      />
     </mesh>
   )
 }
