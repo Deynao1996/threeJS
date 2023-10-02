@@ -3,10 +3,13 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
 import loadable from '@loadable/component'
 
-const defaultLabel = 'Template'
+const defaultLabel = 'Marine'
 const componentsArr = [
   { label: '--DEVELOPMENT--', component: null },
-  { label: 'Template', component: loadable(() => import('./Template')) },
+  {
+    label: 'Marine',
+    component: loadable(() => import('./Figures/Marine'))
+  },
   { label: '--FIGURES--', component: null },
   {
     label: 'Brain',
