@@ -42,43 +42,43 @@ The "threeJS" repository is a collection of creative web scenes and visual effec
    ![Galaxy Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696330889/R3F/Galaxy-min_f6kukd.gif)
 - Dynamic visual effect that represents some galactic object. The object's appearance is influenced by time, noise functions, amplitude, and mouse interaction.
 
-#### 6. Gradient
+#### 7. Gradient
 - Source Code: [Gradient.js](src/components/Figures/Gradient.js)
 
   ![Gradient Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696330889/R3F/Gradient-min_y6jaku.gif)
 - A visually appealing gradient effect with changing colors based on Perlin noise and time. The colors smoothly transition between the colors specified in the uniform, and the overall appearance is dynamic and captivating.
 
-#### 7. Grid
+#### 8. Grid
 - Source Code: [Grid.js](src/components/Figures/Grid.js)
 
   ![Grid Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696330891/R3F/Grid-min_q2nbwz.gif)
 - A grid pattern with colors transitioning from white to red based on a height map generated using Perlin noise. The grid's appearance changes over time as the height map evolves, resulting in a dynamic visual effect.
 
-#### 8. Mattka
+#### 9. Mattka
 - Source Code: [Mattka.js](src/components/Figures/Mattka.js)
 
   ![Mattka Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696330891/R3F/Mattka-min_mkegr5.gif)
 - An abstract scene with interactive mouse-based distortions, raymarching, and complex geometries. The scene combines various shapes and applies shading effects to create a visually interesting and dynamic result. The mouse position affects the distortion and appearance of the scene.
 
-#### 9. Monopo
+#### 10. Monopo
 - Source Code: [Monopo.js](src/components/Figures/Monopo.js)
 
   ![Monopo Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696330891/R3F/Monopo-min_vh5uaa.gif)
 - Noise-based patterns, and a reflective sphere with refraction. The actual appearance and behavior of these materials will depend on how they are applied to 3D objects and how the uniform values are updated over time.
 
-#### 10. Sun
+#### 11. Sun
 - Source Code: [Sun.js](src/components/Figures/Sun.js)
 
   ![Sun Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696330892/R3F/Sun-min_i5nun4.gif)
 - A visually appealing sun with Perlin noise and other techniques to create various visual effects.
 
-#### 11. Tornado
+#### 12. Tornado
 - Source Code: [Tornado.js](src/components/Figures/Tornado.js)
 
   ![Tornado Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696330892/R3F/Tornado-min_ns5i94.gif)
 - A visual effect that have a tornado-like swirling motion  behavior.
 
-#### 12. Truchet
+#### 13. Truchet
 - Source Code: [Truchet.js](src/components/Figures/Truchet.js)
 
   ![Truchet Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696391958/R3F/Truchet-min_xwxrqb.gif)
@@ -223,4 +223,4 @@ We welcome contributions to make this project even better. If you'd like to cont
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/Deynao1996/threeJS/blob/main/LICENSE.txt).
+This project is licensed under the [MIT License](https://github.com/Deynao1996/threeJS/blob/master/LICENSE.txt).
