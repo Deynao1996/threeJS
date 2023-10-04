@@ -33,7 +33,7 @@ const Forest = () => {
   const groupsRef = useRef([])
   const mouseTargetRef = useRef(new THREE.Vector2())
   const layersCount = 3
-  const isEffect = true
+  const isEffect = false
 
   function handlePointerMove({ pointer }) {
     mouseTargetRef.current.lerp(pointer, 0.1)

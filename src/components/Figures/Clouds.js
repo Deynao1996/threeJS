@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import { TextureLoader } from 'three'
 import { CloudsShaderMaterial } from '../ExtendableShaders/CloudsShader'
 
-import cloud from '../../resources/img/cloud.jpg'
+import cloud from '../../resources/img/brush.png'
 
 extend({ CloudsShaderMaterial })
 
