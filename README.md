@@ -10,8 +10,8 @@ The "threeJS" repository is a collection of creative web scenes and visual effec
 | [2. Marine](#2-marine) | [2. Deburis](#2-deburis)| [2. Billie](#2-billie) | [2. Ancient](#2-ancient) |
 | [3. Boeve](#3-boeve)   | [3. Forest](#3-forest)  | [3. Volt](#3-volt) | [3. Beyonce](#3-beyonce) |
 | [4. Clouds](#4-clouds) | [4. Ego](#4-ego)       | [4. Wave](#4-wave) |                     |
-| [5. Dave](#5-dave)     | [5. Hajime](#5-hajime) | [6. Waves](#6-whatever) |                     |
-| [6. Galaxy](#6-galaxy) | [6. Tao](#6-tao)       | [6. Whatever](#6-tao) |                     |
+| [5. Dave](#5-dave)     | [5. Hajime](#5-hajime) | [6. Waves](#6-waves) |                     |
+| [6. Galaxy](#6-galaxy) | [6. Tao](#6-tao)       | [6. Whatever](#6-whatever) |                     |
 | [7. Gradient](#7-gradient) |                   |                     |                     |
 | [8. Grid](#8-grid)     |                        |                     |                     |
 | [9. Mattka](#9-mattka) |                       |                     |                     |
