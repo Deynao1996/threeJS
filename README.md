@@ -2,6 +2,24 @@
 
 The "threeJS" repository is a collection of creative web scenes and visual effects built using Three.js, React Three Fiber, React Drei, and GLSL shaders. This project is dedicated to learning and experimentation in the world of 3D graphics and interactive web experiences, with inspiration and credit given to Yuri Artiukh ([Twitter](https://twitter.com/akella), [YouTube](https://www.youtube.com/@akella_)). I have been replicating Yuri Artiukh's streams and recreating his works using React Three Fiber and React Drei, all done purely for learning purposes without any commercial intent.
 
+## Navigation
+
+| [Figures](#figures)     | [Galleries](#galleries) | [Images](#images)   | [Models](#models)   |
+| ----------------------- | ----------------------- | ------------------- | ------------------- |
+| [1. Brain](#1-brain)   | [1. Atoni](#1-antoni)   | [1. Ever](#1-ever) | [1. Crosswire](#1-crosswire) |
+| [2. Marine](#2-marine) | [2. Deburis](#2-deburis)| [2. Billie](#2-billie) | [2. Ancient](#2-ancient) |
+| [3. Boeve](#3-boeve)   | [3. Forest](#3-forest)  | [3. Volt](#3-volt) | [3. Beyonce](#3-beyonce) |
+| [4. Clouds](#4-clouds) | [4. Ego](#4-ego)       | [4. Wave](#4-wave) |                     |
+| [5. Dave](#5-dave)     | [5. Hajime](#5-hajime) | [6. Waves](#6-whatever) |                     |
+| [6. Galaxy](#6-galaxy) | [6. Tao](#6-tao)       | [6. Whatever](#6-tao) |                     |
+| [7. Gradient](#7-gradient) |                   |                     |                     |
+| [8. Grid](#8-grid)     |                        |                     |                     |
+| [9. Mattka](#9-mattka) |                       |                     |                     |
+| [10. Monopo](#10-monopo) |                     |                     |                     |
+| [11. Sun](#11-sun)     |                       |                     |                     |
+| [12. Tornado](#12-tornado) |                   |                     |                     |
+| [13. Truchet](#13-truchet) |                   |                     |                     |
+
 ## Scenes Overview
 
 ### Figures
@@ -154,7 +172,7 @@ The "threeJS" repository is a collection of creative web scenes and visual effec
    ![Waves Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696393432/R3F/Waves-min_si4nck.gif)
 - A dynamic and wavy distortion effect on an image based on a displacement map. The displacement map's red channel is used to determine the angle and magnitude of displacement, resulting in a visually interesting distortion effect on the provided image.
 
-#### 5. Whatever
+#### 6. Whatever
 - Source Code: [Whatever.js](src/components/Images/Whatever.js)
 
    ![Whatever Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696393736/R3F/Whatever-min_x5n9yb.gif)
