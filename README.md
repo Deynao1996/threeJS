@@ -19,6 +19,7 @@ The "threeJS" repository is a collection of creative web scenes and visual effec
 | [11. Sun](#11-sun)     |                       |                     |                     |
 | [12. Tornado](#12-tornado) |                   |                     |                     |
 | [13. Truchet](#13-truchet) |                   |                     |                     |
+| [14. Ribbon](#14-ribbon) |                   |                     |                     |
 
 ## Scenes Overview
 
@@ -101,6 +102,12 @@ The "threeJS" repository is a collection of creative web scenes and visual effec
 
   ![Truchet Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1696391958/R3F/Truchet-min_xwxrqb.gif)
 - A visual effect that render a grid of rotated squares with some shading and transparency. The grid's orientation and pattern are controlled by position of the 3D geometry.
+
+#### 14. Ribbon
+- Source Code: [Ribbon.js](src/components/Figures/Ribbon.js)
+
+  ![Ribbon Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1697283309/Ribbon-min_g1zhte.gif)
+- A 3D ribbon-like structure consisting of multiple lines. The lines are animated and have a sin-wave-like amplitude along their length, and they respond to a time-based animation.
 
 ### Galleries
 

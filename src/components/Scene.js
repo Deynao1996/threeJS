@@ -5,8 +5,8 @@ import loadable from '@loadable/component'
 
 const defaultLabel = 'Template'
 const componentsArr = [
-  // { label: '--DEVELOPMENT--', component: null },
-  // { label: 'Template', component: loadable(() => import('./Template')) },
+  { label: '--DEVELOPMENT--', component: null },
+  { label: 'Template', component: loadable(() => import('./Template')) },
   { label: '--FIGURES--', component: null },
   {
     label: 'Brain',
@@ -58,6 +58,14 @@ const componentsArr = [
     component: loadable(() => import('./Figures/Truchet')),
     props: {
       camera: { position: [0, 0, -4], fov: 10 }
+    }
+  },
+  {
+    label: 'Ribbon',
+    component: loadable(() => import('./Figures/Ribbon')),
+    props: {
+      camera: { position: [0, 2, 2], near: 0.01, far: 100, fov: 70 },
+      shadows: true
     }
   },
   { label: '--GALLERIES--', component: null },

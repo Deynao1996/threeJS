@@ -21,9 +21,10 @@
     "react-dom": "^18.2.0",
     "react-merge-refs": "^2.0.1",
     "react-router-dom": "^6.8.1",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.1",
     "simplex-noise": "^3.0.1",
     "three": "^0.151.3",
+    "three-bvh-csg": "^0.0.10",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
